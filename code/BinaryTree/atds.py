@@ -7,9 +7,6 @@ A collection of ADT classes
 __author__ = "Max Ismagilov"
 __version__ = "2024-02-13"
 
-from typing import Any
-
-
 class Stack:
     """This class creates a stack (wrapped around list)
     """
@@ -279,7 +276,34 @@ class HashTable:
             check += 1
         return None
         
+class BinaryTree:
+    def __init__(self, value, left=None, right=None):
+        self.value = value
+        self.left  = left
+        self.right = right
+        
+    def __str__(self):
+        return f"BinaryTree[key={self.value},left_child={self.left},right_child={self.right}]"
+        
+    def get_root_val(self):
+        return self.value
     
-            
-            
-            
+    def set_root_val(self, value):
+        self.value = value
+        
+    def get_left_child(self):
+        return self.left
+    
+    def get_right_child(self):
+        return self.right
+    
+    def insert_left(self, value):
+        btleft = BinaryTree(value, left=self.left)
+        self.left = btleft
+        
+    def insert_right(self, value):
+        btright = BinaryTree(value, right=self.right)
+        self.right = btright
+        
+        
+    
