@@ -432,9 +432,9 @@ class TreeNode(object):
         self.payload = value
         self.left_child = lc
         self.right_child = rc
-        if self.has_left_child():
+        if self.get_left_child() != None:
             self.left_child.parent = self
-        if self.has_right_child():
+        if self.get_right_child() != None: 
             self.right_child.parent = self
             
     def get_value(self):
@@ -448,12 +448,12 @@ class TreeNode(object):
         keys using a loop! What?!!
         """
         if self:
-            if self.has_left_child():
-                for elem in self.left:
+            if self.get_left_child() != None:
+                for elem in self.left_child:
                     yield elem
-            yield self.key
-            if self.has_right_child():
-                for elem in self.right:
+            yield self.key, self.val
+            if self.get_right_child() != None:
+                for elem in self.right_child:
                     yield elem
 
     def __repr__(self):
@@ -481,7 +481,7 @@ class BinarySearchTree(object):
 
     def __iter__(self):
         """Allows us to iterate through the binary tree. ?!"""
-        return self.root.__iter__()
+        return self.tree.__iter__()
 
     def _find(self, key, current: TreeNode):
         """finds either the closest value or the actual value of the key in the tree
